@@ -1,0 +1,6 @@
+com/command/Command.class
+com/command/TurnOFFCommand.class
+com/command/Light.class
+com/command/App.class
+com/command/Switcher.class
+com/command/TurnOnCommand.class
