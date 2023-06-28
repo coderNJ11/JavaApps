@@ -1,0 +1,7 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.project.sourcePaths": [
+        "compare/compareEmployee/src",
+        "reward/src/main/java/com/user/rewards/reward"
+    ]
+}
