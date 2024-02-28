@@ -1,0 +1,3 @@
+db.notification.createIndex({ routeId: 1 });
+db.notification.createIndex({ routeId: 1, processed: 1 });
+db.notification.createIndex({ updateTime: 1 });

@@ -1,0 +1,6 @@
+# Run a container based on the built image
+docker run -d --name my-node-container my-node-app
+📝 Copy Code
+
+# Continuously append data to the log file
+docker exec my-node-container sh -c "while true; do echo 'Log entry' >> /app/log/service.log; sleep 1; done"

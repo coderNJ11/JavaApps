@@ -1,0 +1,5 @@
+run docker server
+docker build -t fromio-server .
+
+run docker
+docker run -d -p 3000:3000 fromio-server

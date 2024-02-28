@@ -1,0 +1,40 @@
+From node:16 as T build
+
+USER root
+
+RUN apt-get update && apt-get install -y logrotate
+
+RUN mkdir -p /app
+
+RUN mkdir /app/log
+
+RUN mkdir -p /app/certs
+
+WORKDIR /app
+
+RUN chmod -R 777 /app
+
+COPY package.json /app
+COPY package-lock.json /app
+COPY .npmrc /app
+
+RUN npm install --force
+
+COPY . /app
+
+RUN ls /app/
+
+RUN chmod -R 777 /app/certs
+
+RUN chmod -R 777 /app/log
+
+RUN chmod -R 777 /app/load-env.sh
+
+EXPOSE 3000
+
+RUN chown -R root:root /app/log && chmod -R 755 /app/log
+
+CMD ["/app/log_rotate.sh"]
+
+ENTRYPOINT node --mac-http-header-size=131872 fromio > /app/log/fromio.log 2>&1
+
