@@ -1,40 +1,35 @@
-From node:16 as T build
+# Use the official Node.js 16 image
+FROM node:16
 
+# Set the USER to root
 USER root
 
+# Update package repositories and install logrotate
 RUN apt-get update && apt-get install -y logrotate
 
-RUN mkdir -p /app
+# Create necessary directories and set permissions
+RUN mkdir -p /app /app/log /app/certs \
+  && chmod -R 777 /app /app/certs /app/log /app/load-env.sh
 
-RUN mkdir /app/log
-
-RUN mkdir -p /app/certs
-
+# Set the working directory
 WORKDIR /app
 
-RUN chmod -R 777 /app
-
-COPY package.json /app
-COPY package-lock.json /app
-COPY .npmrc /app
-
+# Copy package files and install dependencies
+COPY package.json package-lock.json .npmrc /app/
 RUN npm install --force
 
+# Copy application files
 COPY . /app
 
-RUN ls /app/
-
-RUN chmod -R 777 /app/certs
-
-RUN chmod -R 777 /app/log
-
-RUN chmod -R 777 /app/load-env.sh
-
-EXPOSE 3000
-
+# Set permissions for log directory
 RUN chown -R root:root /app/log && chmod -R 755 /app/log
 
+# Add logrotate configuration file
+ADD logrotate.conf /etc/logrotate.conf
+
+# Add logrotate script
+ADD logrotate.sh /app/log_rotate.sh
+
+# Set the entry point and command
 CMD ["/app/log_rotate.sh"]
-
-ENTRYPOINT node --mac-http-header-size=131872 fromio > /app/log/fromio.log 2>&1
-
+ENTRYPOINT ["node", "--max-http-header-size=131872", "fromio", ">", "/app/log/fromio.log", "2>&1"]

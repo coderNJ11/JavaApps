@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: your-app
+  template:
+    metadata:
+      labels:
+        app: your-app
+    spec:
+      containers:
+        - name: your-app-container
+          image: your-docker-registry/your-app-image:your-tag
+          ports:
+            - containerPort: 8080  # Replace with your application's port
+          resources:
+            limits:
+              memory: "256Mi"  # Adjust based on your application's requirements
+              cpu: "250m"       # Adjust based on your application's requirements
+          volumeMounts:
+            - name: log-volume
+              mountPath: /app/log  # Mount the log directory from the host
+      volumes:
+        - name: log-volume
+          emptyDir: {}
