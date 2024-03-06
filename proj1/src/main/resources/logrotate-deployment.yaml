@@ -26,4 +26,5 @@ spec:
               mountPath: /app/log  # Mount the log directory from the host
       volumes:
         - name: log-volume
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: log-volume-pvc
