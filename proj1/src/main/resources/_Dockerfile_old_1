@@ -4,8 +4,8 @@ FROM node:16
 # Set the USER to root
 USER root
 
-# Update package repositories and install logrotate
-RUN apt-get update && apt-get install -y logrotate
+# Update package repositories and install logrotate and cron
+RUN apt-get update && apt-get install -y logrotate cron
 
 # Create necessary directories and set permissions
 RUN mkdir -p /app /app/log /app/certs \
@@ -24,11 +24,17 @@ COPY . /app
 # Set permissions for log directory
 RUN chown -R root:root /app/log && chmod -R 755 /app/log
 
+# Set permissions for log file
+RUN touch /var/log/fromio.log && chmod 664 /var/log/fromio.log
+
 # Add logrotate configuration file
 ADD logrotate.conf /etc/logrotate.conf
 
 # Add logrotate script
 ADD logrotate.sh /app/log_rotate.sh
 
-# Set the entry point and command
-CMD ["sh", "-c", "logrotate -s /app/logrotate.status /etc/logrotate.conf && tail -f /dev/null"]
+# Add a cron configuration file to run logrotate every 10 minutes
+ADD logrotate-cron /etc/cron.d/logrotate-cron
+
+# Start the cron service and set the entry point and command
+CMD service cron start && sh -c "logrotate -s /app/logrotate.status /etc/logrotate.conf && tail -f /dev/null"
