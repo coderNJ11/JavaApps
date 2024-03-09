@@ -124,7 +124,7 @@ public class NotificationRepository {
 
     public Mono<List<Notification>> processNotifications(PriorityBlockingQueue<Notification> notificationQueue, String routeID) {
     return Flux.fromIterable(notificationQueue)
-            .flatMap(notification -> processWithRetry(notification)
+            .concatMap(notification -> processWithRetry(notification)
                 .onErrorResume(error -> {
         System.out.println("Error processing notification: " + error.getMessage());
         return Mono.empty(); // Continue processing next notification
