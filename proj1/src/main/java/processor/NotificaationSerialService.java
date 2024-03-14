@@ -2,15 +2,12 @@ package processor;
 
 import Respository.NotificationRepository;
 import model.Notification;
+import org.redisson.api.RedissonClient;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-import org.redisson.Redisson;
-import org.redisson.api.RLock;
-import org.redisson.api.RedissonClient;
 
 public class NotificaationSerialService {
     private final NotificationRepository notificationRepository;
@@ -52,36 +49,4 @@ public class NotificaationSerialService {
     }
 
 
-
-
-
-
-
-//    private RLock getNotificationLock(String notificationId) {
-//        return redisson.getLock("notificationId:" + notificationId);
-//    }
-//
-//    private boolean isNotAlreadyProcessing(String notificationId) {
-//        RLock lock = getNotificationLock(notificationId);
-//        try {
-//            // Try to acquire the lock with a timeout
-//            boolean isLockAcquired = lock.tryLock(100, 10, TimeUnit.SECONDS);
-//            return isLockAcquired;
-//        } catch (InterruptedException e) {
-//            Thread.currentThread().interrupt();
-//            return false;
-//        }
-//    }
-//
-//    private void releaseLock(String notificationId) {
-//        RLock lock = getNotificationLock(notificationId);
-//        if (lock.isLocked()) {
-//            lock.unlock();
-//        }
-//    }
-//
-//    // Add a method to close the RedissonClient when the application shuts down
-//    public void closeRedissonClient() {
-//        redisson.shutdown();
-//    }
 }

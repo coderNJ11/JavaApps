@@ -9,8 +9,12 @@ cpu_utilization_threshold=80
 
 rotate_log() {
     if [ -f "$log_file" ] && [ $(stat -c%s "$log_file") -gt $((max_size_kb * 1024)) ]; then
-        for ((i=max_rotated_files; i>1; i--)); do
-            [ -f "${log_file}.$((i-1)).gz" ] && mv "${log_file}.$((i-1)).gz" "${log_file}.$i.gz"
+        i=$max_rotated_files
+        while [ $i -gt 1 ]; do
+            if [ -f "${log_file}.$((i-1)).gz" ]; then
+                mv "${log_file}.$((i-1)).gz" "${log_file}.$i.gz"
+            fi
+            i=$((i-1))
         done
         mv "$log_file" "${log_file}.1"
         sleep 10  # Introduce a delay to reduce CPU usage during compression
