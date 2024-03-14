@@ -1,0 +1,14 @@
+spring:
+  kafka:
+    bootstrap:
+      servers: your-bootstrap-servers
+    producer:
+      key-serializer: your-key-serializer
+      value-serializer: your-value-serializer
+    consumer:
+      group-id: your-group-id
+    properties:
+      num:
+        partitions: your-num-partitions
+        replication:
+          factor: your-replication-factor

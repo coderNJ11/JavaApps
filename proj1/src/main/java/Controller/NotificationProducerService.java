@@ -20,7 +20,7 @@ public class NotificationProducerService {
     public Mono<ServerResponse> saveNotificationToKafka(ServerRequest request) {
         return request.headers().header("X-Apple-Client-App-ID").stream().findFirst()
                 .map(clientAppId -> request.bodyToMono(Notification.class)
-                        .flatMap(notification -> Mono.fromFuture(() -> kafkaTemplate.send("inBoundNotifq", notification.getRouteId(), notification))
+                        .flatMap(notification -> Mono.fromFuture(() -> kafkaTemplate.send("inBoundNotifq", notification.getRouteId(), notification).toCompletableFuture())
                                 .handle((recordMetadata, sink) -> {
                                     if (recordMetadata != null) {
                                         sink.next(recordMetadata);
