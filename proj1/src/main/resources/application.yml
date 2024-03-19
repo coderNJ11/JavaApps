@@ -1,7 +1,7 @@
 spring:
   kafka:
     bootstrap:
-      servers: your-bootstrap-servers
+      servers: localhost:9092
     producer:
       key-serializer: your-key-serializer
       value-serializer: your-value-serializer
@@ -9,6 +9,6 @@ spring:
       group-id: your-group-id
     properties:
       num:
-        partitions: your-num-partitions
+        partitions: 3
         replication:
-          factor: your-replication-factor
+          factor: 3
