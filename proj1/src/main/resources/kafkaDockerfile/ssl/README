@@ -1,8 +1,7 @@
 Generate a Self-Signed SSL Certificate:
 You can use the keytool command-line utility, which is included with Java, to generate a self-signed SSL certificate. Here's an example command to generate a self-signed certificate:
 
-
-keytool -genkey -alias localhost -keyalg RSA -keystore keystore.jks -validity 365 -keysize 2048
+keytool -genkey -alias localhost -keyalg RSA -keystore keystore.jks -validity 365 -keysize 2048 -ext SAN=DNS:kafka
 Export the Certificate:
 After generating the keystore, you can export the certificate to be used in the truststore. Here's an example command to export the certificate:
 
