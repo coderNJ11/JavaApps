@@ -2,31 +2,41 @@ version: '3'
 
 services:
   zookeeper:
-    image: wurstmeister/zookeeper
+    image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
-    ports:
-      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
-    image: wurstmeister/kafka
+    image: confluentinc/cp-kafka:latest
     container_name: kafka
-    ports:
-      - "9092:9092"
-      - "9093:9093"
+    depends_on:
+      - zookeeper
+    command: tail -f /dev/null
     environment:
-      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9093,OUTSIDE://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:SSL,OUTSIDE:PLAINTEXT
-      KAFKA_LISTENERS: INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
-      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
-      KAFKA_CREATE_TOPICS: "inBoundNotifq:3:3"
-      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
-      KAFKA_SSL_KEYSTORE_LOCATION: "/etc/kafka/secrets/keystore.jks"
-      KAFKA_SSL_KEYSTORE_PASSWORD: "password"
-      KAFKA_SSL_KEY_PASSWORD: "password"
-      KAFKA_SSL_TRUSTSTORE_LOCATION: "/etc/kafka/secrets/truststore.jks"
-      KAFKA_SSL_TRUSTSTORE_PASSWORD: "password"
-      KAFKA_OPTS: "-Djavax.net.debug=ssl"
+      KAFKA_SSL_CIPHER_SUITES: "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SSL
+      KAFKA_ADVERTISED_LISTENERS: SSL://localhost:9092
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: password
+      KAFKA_SSL_KEY_PASSWORD: password
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: password
+      KAFKA_SSL_KEYSTORE_FILENAME: kafka.keystore.jks
+      KAFKA_SSL_KEY_CREDENTIALS: password
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: password
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
+      KAFKA_LISTENERS: SSL://kafka:9092
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_BROKER_RACK: "r1"
+    user: "0:0"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /tmp/keystore.jks:/etc/kafka/secrets/keystore.jks
-      - /tmp/truststore.jks:/etc/kafka/secrets/truststore.jks
+      - ./secrets:/etc/kafka/secrets
+    ports:
+      - 9092:9092
