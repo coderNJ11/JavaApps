@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
-from werkzeug.contrib.cache import SimpleCache
+from flask_caching import Cache
 import hashlib
-import ssl
 
-app = Flask(__name)
-cache = SimpleCache()
+app = Flask(__name__)
+cache = Cache(app)
+
+# Configuring the cache
+app.config['CACHE_TYPE'] = 'simple'
+cache.init_app(app)
 
 # Dummy access key and secret key for A3 and HMAC authentication
 ACCESS_KEY_A3 = 'dummy_access_key_a3'
