@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1c5059f3-39f5-4dd4-ba56-c25abd9d079e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Exception/EFormBusinessServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Form.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/FormDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/FormSubmission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/FormSubmissionRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/FormSubmissionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/IBPMServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProcessInsatnceInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ProcessInstance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Submission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/TaskInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/BaseUrlProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ConfigurationDataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ConfigurationDataSubmissionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/EFormsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/FormIORequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/FormInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/FormSubmissionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/FormSubmissionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/JoltTranformService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ServiceCaller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ServiceCallerEnricher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/ServiceRequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/WebClientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/utils/GenericConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/triggerSumbission.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pythonserver/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pythonserver/server.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2dUNTCTssjAiPoVxRUqZnSJOemq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="model" />
+      <recent name="service" />
+      <recent name="Exception" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1c5059f3-39f5-4dd4-ba56-c25abd9d079e" name="Changes" comment="" />
+      <created>1710058703628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710058703628</updated>
+    </task>
+    <servers />
+  </component>
+</project>
