@@ -1,0 +1,35 @@
+<form (ngSubmit)="generateQuery()">
+  <div>
+    <label for="entity1Key">Entity 1:</label>
+    <input type="text" id="entity1Key" [(ngModel)]="entity1.key">
+  </div>
+  <div>
+    <label for="entity2Key">Entity 2:</label>
+    <input type="text" id="entity2Key" [(ngModel)]="entity2.key">
+  </div>
+  <div>
+    <label for="operator">Operator:</label>
+    <select id="operator" [(ngModel)]="operator">
+      <option value="=">Equal to</option>
+      <option value="<">Less than</option>
+      <option value=">">Greater than</option>
+      <option value="<=">Less than or equal to</option>
+      <option value=">=">Greater than or equal to</option>
+      <option value="!=">Not equal to</option>
+    </select>
+  </div>
+  <div>
+    <label for="value">Value:</label>
+    <input type="text" id="value" [(ngModel)]="value">
+  </div>
+  <div>
+    <label for="ifTrue">If true:</label>
+    <input type="text" id="ifTrue" [(ngModel)]="ifTrue">
+  </div>
+  <div>
+    <label for="ifFalse">If false:</label>
+    <input type="text" id="ifFalse" [(ngModel)]="ifFalse">
+  </div>
+  <button type="submit">Generate Query</button>
+</form>
+<p>Query: {{ query }}</p>
