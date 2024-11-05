@@ -1,0 +1,23 @@
+{
+  "data": {
+    "data1": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "phone": "123-456-7890"
+    },
+    "meta": {
+      "instanceId": "1234567890",
+      "formId": "myForm",
+      "submissionId": "1234567890",
+      "created": "2022-07-25T14:30:00.000Z",
+      "updated": "2022-07-25T14:30:00.000Z"
+    },
+    "submission": {
+      "id": "1234567890",
+      "type": "submission",
+      "state": "submitted"
+    },
+    "tags": []
+  }
+}
