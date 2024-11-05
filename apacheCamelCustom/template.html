@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email with HTML attachment</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<h1>Email with HTML attachment</h1>
+<table>
+    <tr>
+        <th>Child Name</th>
+        <th>Region</th>
+        <th>Status</th>
+        <th>Child Status Message</th>
+    </tr>
+    #foreach ($item in $body)
+    <tr>
+        <td>$item.child_name</td>
+        <td>$item.region</td>
+        <td>$item.status</td>
+        <td>$item.child_status_message</td>
+    </tr>
+    #end
+</table>
+</body>
+</html>
