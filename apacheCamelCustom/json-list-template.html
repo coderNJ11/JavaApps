@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <h2>JSON List</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+      <tr>
+        {{#headers}}
+          <th>{{this}}</th>
+        {{/headers}}
+      </tr>
+      {{#list}}
+        <tr>
+          {{#this}}
+            <td>{{this}}</td>
+          {{/this}}
+        </tr>
+      {{/list}}
+    </table>
+  </body>
+</html>
