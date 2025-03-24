@@ -2,8 +2,8 @@
   "data": {
     "data1": {
       "firstName": "John",
-      "lastName": "Doe",
-      "email": "john.doe@example.com",
+      "lastName": "lennon",
+      "email": "john.lennon@example.com",
       "phone": "123-456-7890"
     },
     "meta": {
@@ -15,8 +15,8 @@
     },
     "submission": {
       "id": "1234567890",
-      "type": "submission",
-      "state": "submitted"
+      "type": "sub",
+      "state": "trigger"
     },
     "tags": []
   }
